@@ -3,17 +3,24 @@ version: "3"
 services:
   db:
     image: postgres:10
+    ports:
+      - "5432:5432"
     volumes:
-      - ./db_scripts:/docker-entrypoint-initdb.d
+      - ./db:/docker-entrypoint-initdb.d
   graphql:
     build:
       context: ./graphql
     ports:
       - "5000:5000"
+    env_file:
+        ./graphql/.env
+    volumes:
+      - ./graphql:/app
   app:
     build:
-      context: .
+      context: ./app
     ports:
       - "3000:3000"
     volumes:
-      - .:/app
+      - ./app:/app
+      - /app/node_modules

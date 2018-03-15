@@ -15,9 +15,9 @@ RUN apt-get update \
     && apt-get install -y yarn \
     && rm -rf /var/lib/apt/lists/*
 
-# install dependencies
+# install dependencies globally so we dont get node_modules folder on host
 COPY package.json yarn.lock /app/
-WORKDIR /app/
+WORKDIR /app
 RUN yarn install --pure-lockfile
 
 # copy source
