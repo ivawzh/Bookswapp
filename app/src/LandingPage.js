@@ -88,6 +88,17 @@ class LandingPage extends React.Component {
             slowerScrollRate={false}
             tag="figure"
         >
+          <Typography variant="headline" align="center" component='h1'>
+            Get Free Books and Free your books!
+          </Typography>
+        </Parallax>
+        <Parallax
+            className={classes.introContainer}
+            offsetYMax={50}
+            offsetYMin={0}
+            slowerScrollRate={false}
+            tag="figure"
+        >
           <Typography variant="headline" align="center">
             Some stories are so good you should share them
           </Typography>
