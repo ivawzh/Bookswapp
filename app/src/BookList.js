@@ -13,6 +13,9 @@ const styles = theme => ({
     margin: 'auto',
     paddingTop: theme.spacing.unit * 20
   },
+  gridRow: {
+    zIndex:100,
+  }
 });
 
 class BookList extends React.Component {
@@ -28,7 +31,6 @@ class BookList extends React.Component {
         <div className='flex w-100 h-100 items-center justify-center pt7'>
           <div>
             Loading
-            (from {process.env.REACT_APP_GRAPHQL_ENDPOINT})
           </div>
         </div>
       )
@@ -39,7 +41,7 @@ class BookList extends React.Component {
     return (
       <Grid className={classes.gridContainer} container spacing={24} justify={'center'}>
         {this.props.books.allBooks && this.props.books.allBooks.edges && this.props.books.allBooks.edges.map(({node: book}) => (
-        <Grid item md={3}>
+        <Grid item md={4} className={classes.gridRow} key={book.id}>
           <BookCard book={book} />
         </Grid>
         ))}
@@ -53,10 +55,16 @@ query {
   allBooks {
     edges {
       node {
+        id
         title
-        author {
+        image
+        author: authorByAuthorId {
           firstname
           lastname
+        }
+        owner: userByOwnerId {
+          firstname,
+          lastname,
         }
       }
     }

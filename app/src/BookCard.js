@@ -4,6 +4,9 @@ import { withStyles } from 'material-ui/styles';
 import Card, { CardActions, CardContent, CardMedia } from 'material-ui/Card';
 import Button from 'material-ui/Button';
 import Typography from 'material-ui/Typography';
+import Avatar from 'material-ui/Avatar';
+import Chip from 'material-ui/Chip';
+import FaceIcon from 'material-ui-icons/Face';
 
 
 const styles = theme => ({
@@ -13,39 +16,51 @@ const styles = theme => ({
   media: {
     height: theme.spacing.unit * 30,
   },
+  chip: {
+    margin: theme.spacing.unit,
+  },
 });
 
 
 class BookCard extends PureComponent {
-  propTypes = {
+  static propTypes = {
     classes: PropTypes.object.isRequired,
+    book: PropTypes.object.isRequired,
   }
 
   render() {
-  const { classes } = this.props;
+  const {
+    classes,
+    book,
+  } = this.props;
     return (
       <div>
         <Card className={classes.card}>
           <CardMedia
             className={classes.media}
-            image="/images1.jpg"
+            image={book.image}
             title="Pass it forward"
           />
           <CardContent>
             <Typography variant="headline" component="h2">
-              Swap Books
+              {book.title}
             </Typography>
-            <Typography component="p">
-              Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-              across all continents except Antarctica
+            <Typography variant="subheading" component="h4">
+              {book.author && `${book.author.firstname} ${book.author.lastname}`}
             </Typography>
           </CardContent>
           <CardActions>
+            <Chip
+              avatar={
+                <Avatar>
+                  <FaceIcon />
+                </Avatar>
+              }
+              label={`${book.owner.firstname} ${book.owner.lastname}`}
+              className={classes.chip}
+            />
             <Button size="small" color="primary">
-              Share
-            </Button>
-            <Button size="small" color="primary">
-              Learn More
+              Collect
             </Button>
           </CardActions>
         </Card>

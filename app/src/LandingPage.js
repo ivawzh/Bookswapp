@@ -12,6 +12,9 @@ import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import { withStyles } from 'material-ui/styles';
 import BookList from './BookList';
+import { ParallaxProvider } from 'react-scroll-parallax';
+import { Parallax } from 'react-scroll-parallax';
+
 
 import withRoot from './theme';
 
@@ -22,7 +25,6 @@ const styles = theme => ({
   gridContainer: {
     width: '1200px',
     margin: 'auto',
-    paddingTop: theme.spacing.unit * 20
   },
   flex: {
     flex: 1,
@@ -30,32 +32,27 @@ const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
     float: 'right',
-  }
+  },
+  introContainer: {
+    margin: '0',
+  },
+  intro: {
+    width: '100%',
+    height: theme.spacing.unit * 50,
+    marginBottom: theme.spacing.unit * -30,
+    backgroundColor: theme.palette.primary.light,
+  },
 });
 
-class Index extends React.Component {
-  state = {
-    open: false,
+class LandingPage extends React.Component {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
   };
-
-  handleClose = () => {
-    this.setState({
-      open: false,
-    });
-  };
-
-  handleClick = () => {
-    this.setState({
-      open: true,
-    });
-  };
-
   render() {
     const { classes } = this.props;
-    const { open } = this.state;
 
     return (
-      <div className={classes.root}>
+      <ParallaxProvider className={classes.root}>
         <AppBar color="default">
           <Toolbar>
             <img
@@ -74,31 +71,31 @@ class Index extends React.Component {
             </Button>
           </Toolbar>
         </AppBar>
+        <Parallax
+            className={classes.introContainer}
+            offsetYMax={100}
+            offsetYMin={0}
+            slowerScrollRate={false}
+            tag="figure"
+        >
+            <div className={classes.intro}></div>
+            {/*<img src="/Book-Exchange-2.jpg" />*/}
+        </Parallax>
+        <Parallax
+            className={classes.introContainer}
+            offsetYMax={50}
+            offsetYMin={0}
+            slowerScrollRate={false}
+            tag="figure"
+        >
+          <Typography variant="headline" align="center">
+            Some stories are so good you should share them
+          </Typography>
+        </Parallax>
         <BookList/>
-        <Dialog open={open} onClose={this.handleClose}>
-          <DialogTitle>Super Secret Password</DialogTitle>
-          <DialogContent>
-            <DialogContentText>1-2-3-4-5</DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button color="primary" onClick={this.handleClose}>
-              OK
-            </Button>
-          </DialogActions>
-        </Dialog>
-        <Typography variant="display1" gutterBottom>
-          Material-UI
-        </Typography>
-        <Typography variant="subheading" gutterBottom>
-          example project
-        </Typography>
-      </div>
+      </ParallaxProvider>
     );
   }
 }
 
-Index.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withRoot(withStyles(styles)(Index));
+export default withRoot(withStyles(styles)(LandingPage));
