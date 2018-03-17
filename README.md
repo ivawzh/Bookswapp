@@ -21,4 +21,4 @@ be rerun.
   - register book form
     - uniform
     - upload images
-  -
+  - SEO from https://github.com/thedaviddias/Front-End-Checklist#seo
