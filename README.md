@@ -17,7 +17,8 @@ change or data change in the postgres sql directory you will need to run
 be rerun.
 
 ## TODO:
-  - auth: postgraphql JWT
+  - ~~Authentication: postgraphql JWT~~
+  - Authorisation - add custom claims to firebase JWT and use these with postgres security
   - register book form
     - uniform
     - upload images

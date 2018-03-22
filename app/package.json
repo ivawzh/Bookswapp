@@ -1,6 +1,6 @@
 {
   "name": "bookish",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "apollo-cache-inmemory": "^1.1.9",
@@ -8,11 +8,13 @@
     "apollo-link": "^1.2.1",
     "apollo-link-error": "^1.0.7",
     "apollo-link-http": "^1.5.2",
+    "firebase": "^4.11.0",
     "graphql": "^0.13.1",
     "graphql-tag": "^2.8.0",
     "material-ui": "^1.0.0-beta.37",
     "material-ui-icons": "^1.0.0-beta.36",
     "react": "^16.2.0",
+    "react-addons-css-transition-group": "^15.6.2",
     "react-apollo": "^2.0.4",
     "react-dom": "^16.2.0",
     "react-router": "^4.2.0",

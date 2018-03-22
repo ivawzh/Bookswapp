@@ -10,4 +10,4 @@ WORKDIR /app/
 COPY . /app/
 
 # entrypoint
-CMD node server.js
+CMD npm start

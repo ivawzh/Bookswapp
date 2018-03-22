@@ -16,6 +16,7 @@ services:
         ./graphql/.env
     volumes:
       - ./graphql:/app
+      - /app/node_modules
   app:
     build:
       context: ./app

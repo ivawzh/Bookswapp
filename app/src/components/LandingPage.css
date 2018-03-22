@@ -1,0 +1,8 @@
+.intro-text-appear {
+  opacity: 0.01;
+}
+
+.intro-text-appear.intro-text-appear-active {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
