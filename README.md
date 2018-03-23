@@ -22,4 +22,14 @@ be rerun.
   - register book form
     - uniform
     - upload images
+    - location - geocoding
+  - search books
+  - find book near me search - postgis search
+  - messaging to arrange collection
   - SEO from https://github.com/thedaviddias/Front-End-Checklist#seo
+  - survey users
+    - would you give away a free book
+    - would you be willing to post it for free?
+    - how far would you be willing to travel to collect?
+    - would you be OK with someone coming to collect from your house or workplace?
+    - would you be willing to pay for postage to recieve a free book?

@@ -29,7 +29,10 @@ const createGraphQLServer = () => {
         console.log(claims);
         next()
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        next();
+      });
     });
     app.use(
       postgraphile(

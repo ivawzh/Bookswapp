@@ -84,6 +84,9 @@ class LandingPage extends React.Component {
           >
             <Card className={classes.card}>
               <CardContent>
+                <Button color="primary">
+                  Find free books near you
+                </Button>
                 <Typography variant="headline" align="center" component='h1'>
                   Share your favorite stories by passing on an old book.
                 </Typography>

@@ -1,12 +1,13 @@
 create schema core;
-
+create extension postgis;
+  
 create table core.users (
   id serial primary key,
   email varchar,
   firstname varchar,
   lastname varchar,
   avatar varchar,
-  location varchar
+  location geometry
 );
 
 create table core.authors (

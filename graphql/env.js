@@ -1,5 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const dotenv = require('dotenv');
+const dotenvExpand = require('dotenv-expand');
+
 
 // CODE TAKEN FROM REACT SCRIPTS
 // https://github.com/facebook/create-react-app/blob/next/packages/react-scripts/config/env.js
@@ -36,8 +39,8 @@ var dotenvFiles = [
 // https://github.com/motdotla/dotenv-expand
 dotenvFiles.forEach(dotenvFile => {
   if (fs.existsSync(dotenvFile)) {
-    require('dotenv-expand')(
-      require('dotenv').config({
+    dotenvExpand(
+      dotenv.config({
         path: dotenvFile,
       })
     );
