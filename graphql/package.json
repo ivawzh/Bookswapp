@@ -4,14 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@fundflow/apollo-redux-form": "^1.1.5",
-    "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "firebase-admin": "^5.11.0",
     "nodemon": "^1.17.2",
-    "postgraphile": "^4.0.0-alpha2.33"
+    "postgraphile": "^4.0.0-alpha2.33",
+    "react-scripts": "^1.1.1"
   },
   "scripts": {
-    "start": "npx nodemon --watch /app ./server.js"
+    "start": "NODE_ENV=development npx nodemon --watch /app ./server.js"
   }
 }

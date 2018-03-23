@@ -12,8 +12,6 @@ services:
       context: ./graphql
     ports:
       - "5000:5000"
-    env_file:
-        ./graphql/.env
     volumes:
       - ./graphql:/app
       - /app/node_modules
