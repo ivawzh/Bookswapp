@@ -65,6 +65,12 @@ query {
         owner: userByOwnerId {
           firstname,
           lastname,
+          avatar,
+          placeByAddressId {
+            country,
+            latitude,
+            longitude,
+          }
         }
       }
     }

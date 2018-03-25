@@ -1,14 +1,100 @@
-set search_path = core;
+set search_path = core, public, postgis;
+
+insert into place
+  (
+    google_places_api_json,
+    google_place_id,
+    latitude,
+    longitude,
+    location,
+    formatted_address,
+    country
+  )
+  values
+  (
+    '{
+     "results" : [
+        {
+           "address_components" : [
+              {
+                 "long_name" : "E17 7ER",
+                 "short_name" : "E17 7ER",
+                 "types" : [ "postal_code" ]
+              },
+              {
+                 "long_name" : "Woodville Road",
+                 "short_name" : "Woodville Rd",
+                 "types" : [ "route" ]
+              },
+              {
+                 "long_name" : "Walthamstow",
+                 "short_name" : "Walthamstow",
+                 "types" : [ "neighborhood", "political" ]
+              },
+              {
+                 "long_name" : "London",
+                 "short_name" : "London",
+                 "types" : [ "postal_town" ]
+              },
+              {
+                 "long_name" : "Greater London",
+                 "short_name" : "Greater London",
+                 "types" : [ "administrative_area_level_2", "political" ]
+              },
+              {
+                 "long_name" : "England",
+                 "short_name" : "England",
+                 "types" : [ "administrative_area_level_1", "political" ]
+              },
+              {
+                 "long_name" : "United Kingdom",
+                 "short_name" : "GB",
+                 "types" : [ "country", "political" ]
+              }
+           ],
+           "formatted_address" : "Woodville Rd, Walthamstow, London E17 7ER, UK",
+           "geometry" : {
+              "location" : {
+                 "lat" : 51.5839949,
+                 "lng" : -0.0303413
+              },
+              "location_type" : "APPROXIMATE",
+              "viewport" : {
+                 "northeast" : {
+                    "lat" : 51.5853438802915,
+                    "lng" : -0.02899231970849797
+                 },
+                 "southwest" : {
+                    "lat" : 51.5826459197085,
+                    "lng" : -0.03169028029150203
+                 }
+              }
+           },
+           "place_id" : "ChIJK0WeG8QddkgRnFc-o3rVvOk",
+           "types" : [ "postal_code" ]
+        }
+     ],
+     "status" : "OK"
+  }',
+  'ChIJK0WeG8QddkgRnFc-o3rVvOk',
+  51.5839949,
+  -0.0303413,
+  ST_SetSRID(ST_MakePoint(-0.0303413::float, 51.5839949::float),4326),
+  'Woodville Rd, Walthamstow, London E17 7ER, UK',
+  'United Kingdom'
+);
+
+
 
 insert into users
-  (firstname, lastname)
+  (firstname, lastname, email, address_id)
   values
-  ('Steph', 'Knowles'),
-  ('James', 'Ward'),
-  ('Jodi', 'key'),
-  ('Becca', 'Smith'),
-  ('Fran', 'Silverton'),
-  ('Cody', 'Barber')
+  ('Steph', 'Knowles', 'steph@knowles.com', 1),
+  ('James', 'Ward', 'nick@ward.com'),
+  ('Jodi', 'key', 'jodi@key.com', 1),
+  ('Becca', 'Smith', 'becca@smith.com'),
+  ('Fran', 'Silverton', 'fran@silverton.com'),
+  ('Cody', 'Barber', 'cody@barber.com')
 ;
 
 insert into authors
