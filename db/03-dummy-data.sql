@@ -1,6 +1,6 @@
 set search_path = core, public, postgis;
 
-insert into place
+insert into places
   (
     google_places_api_json,
     google_place_id,
@@ -90,11 +90,11 @@ insert into users
   (firstname, lastname, email, address_id)
   values
   ('Steph', 'Knowles', 'steph@knowles.com', 1),
-  ('James', 'Ward', 'nick@ward.com'),
+  ('James', 'Ward', 'nick@ward.com', null),
   ('Jodi', 'key', 'jodi@key.com', 1),
-  ('Becca', 'Smith', 'becca@smith.com'),
-  ('Fran', 'Silverton', 'fran@silverton.com'),
-  ('Cody', 'Barber', 'cody@barber.com')
+  ('Becca', 'Smith', 'becca@smith.com', null),
+  ('Fran', 'Silverton', 'fran@silverton.com', null),
+  ('Cody', 'Barber', 'cody@barber.com', null)
 ;
 
 insert into authors

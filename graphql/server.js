@@ -20,19 +20,23 @@ const createGraphQLServer = () => {
     console.log('Connected to database, starting server...')
     app.all('*', (request, response, next) => {
       const authHeader = request.get('authorization');
-      const jwt = authHeader.split('Bearer ')[1]
-      console.log(`verifying JWT ${jwt}`);
-      firebase
-      .auth()
-      .verifyIdToken(jwt)
-      .then(claims => {
-        console.log(claims);
-        next()
-      })
-      .catch(err => {
-        console.log(err);
+      if (authHeader !== undefined){
+        const jwt = authHeader.split('Bearer ')[1]
+        console.log(`verifying JWT ${jwt}`);
+        firebase
+        .auth()
+        .verifyIdToken(jwt)
+        .then(claims => {
+          console.log(claims);
+          next()
+        })
+        .catch(err => {
+          console.log(err);
+          next();
+        });
+      } else {
         next();
-      });
+      }
     });
     app.use(
       postgraphile(

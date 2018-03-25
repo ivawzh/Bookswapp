@@ -1,7 +1,7 @@
 create schema core;
 create extension postgis;
 
-create table core.place (
+create table core.places (
   id serial primary key,
   formatted_address varchar,
   country varchar,
@@ -18,7 +18,7 @@ create table core.users (
   firstname varchar not null,
   lastname varchar not null,
   avatar varchar,
-  address_id integer references core.place (id)
+  address_id integer references core.places (id)
 );
 
 create table core.authors (
